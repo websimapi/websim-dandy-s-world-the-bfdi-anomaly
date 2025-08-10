@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Roboto:wght@400;700&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #111;
+    color: #fff;
+    overflow: hidden;
+}
+
+#bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+#loading-screen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'VT323', monospace;
+    font-size: 24px;
+    color: #0f0;
+    transition: opacity 1s ease-out;
+}
+
+.loader {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#ui-container {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+}
+
+#episode-container {
+    width: 350px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    pointer-events: all;
+    backdrop-filter: blur(5px);
+    align-self: flex-start;
+}
+
+.episode-card {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.episode-card h2 {
+    font-size: 1.2em;
+    color: #ffcc00;
+    margin: 0 0 5px 0;
+}
+
+.episode-card p {
+    font-size: 0.9em;
+    margin: 0 0 10px 0;
+    line-height: 1.4;
+}
+
+.episode-card .objective {
+    font-style: italic;
+    color: #aaa;
+}
+
+#chat-container {
+    width: 300px;
+    height: 400px;
+    background: rgba(30, 32, 37, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    pointer-events: all;
+    backdrop-filter: blur(5px);
+    align-self: flex-end;
+}
+
+.chat-header {
+    padding: 10px;
+    background: rgba(20, 22, 25, 0.8);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    border-radius: 8px 8px 0 0;
+}
+
+.chat-header h3 {
+    margin: 0;
+    font-size: 1em;
+    color: #999;
+}
+
+.chat-messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 10px;
+    font-size: 0.9em;
+}
+
+.chat-message {
+    margin-bottom: 12px;
+}
+
+.chat-message strong {
+    color: #5865F2; /* Discord-like color */
+}
+.chat-message.system strong {
+    color: #f04747; /* System message color */
+}
+
+/* Modal for Realms */
+#realm-modal {
+    position: fixed;
+    z-index: 50;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(8px);
+}
+
+.modal-content {
+    background-color: #2f3136;
+    border: 1px solid #1e1e1e;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 800px;
+    min-height: 500px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #999;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.close-button:hover {
+    color: white;
+}
+
+#modal-body {
+    padding: 20px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* FNF Realm Styles */
+.fnf-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+#fnaf-opponent {
+    width: 250px;
+    height: 250px;
+    background-size: cover;
+    margin-bottom: 20px;
+    animation: glitch 1.5s infinite steps(8);
+}
+@keyframes glitch {
+    0% { transform: translate(0, 0); }
+    10% { transform: translate(-5px, 5px); }
+    20% { transform: translate(5px, -5px); }
+    30% { transform: translate(-5px, -5px); }
+    40% { transform: translate(5px, 5px); }
+    50% { filter: brightness(2) saturate(2); }
+    60% { clip-path: inset(50% 0 25% 0); }
+    70% { clip-path: inset(10% 0 80% 0); }
+    80% { clip-path: inset(45% 0 15% 0); }
+    90% { transform: translate(0, 0); filter: none; clip-path: none; }
+    100% { transform: translate(0, 0); }
+}
+
+.arrow-track {
+    display: flex;
+    gap: 10px;
+}
+.arrow {
+    font-size: 4em;
+    color: grey;
+}
+
